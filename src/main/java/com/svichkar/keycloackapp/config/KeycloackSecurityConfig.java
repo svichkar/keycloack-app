@@ -48,8 +48,10 @@ public class KeycloackSecurityConfig extends KeycloakWebSecurityConfigurerAdapte
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     super.configure(http);
-    http.authorizeRequests()
-        .antMatchers("/help").hasRole("USER") // only user with role user are allowed to access
+    http.anonymous().disable()
+        .authorizeRequests()
+        .antMatchers("/help").hasRole("USER")
+    // only user with role user are allowed to access
     //.anyRequest().permitAll();
     ;
   }
